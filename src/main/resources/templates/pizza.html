@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="ISO-8859-1">
+		<title>Insert title here</title>
+	</head>
+<body th:object="${pizza}">
+	<h1>Books</h1>
+
+	([[*{isbn}]])
+	<a th:href="@{/pizza/{id} (id=*{id})}">
+		 [[*{name}]]
+	</a><br>
+	[[*{name}]] - [[*{price}]]
+</body>
+</html>
