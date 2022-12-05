@@ -11,7 +11,23 @@
 			<h1 class="text-primary p-3">Pizzeria Java</h1>
 			<hr/>
 			<div class="px-5 py-3 row justify-content-center align-items-stretch flex-nowrap bg-light" style="height:80vh;width:100vw;">
-				<th:block th:replace="navAside(${routeName})"></th:block>
+				<aside class="aside col-2 bg-secondary" style="height:100%">
+					<h3 class="py-2">Operazioni:</h3>
+					<nav>
+						<ul class="list-group">
+							<li th:class="'list-group-item ' + ${routeName.equals('home') ? 'active' : ''}">	
+								<a href="/home" class="d-inline-block w-100 text-decoration-none text-dark">Homepage</a>
+							</li>
+							<li th:class="'list-group-item ' + ${routeName.equals('index') ? 'active' : ''}">
+								<a href="/" class="d-inline-block w-100 text-decoration-none text-dark">Vedi tutte le pizze</a>
+							</li>
+							<li th:class="'list-group-item ' + ${routeName.equals('new') ? 'active' : ''}">
+								<i class="fa-solid fa-pen-to-square"></i>
+								<a href="/pizza/newPizza" class="d-inline-block w-100 text-decoration-none text-dark">Crea una nuova pizza</a>
+							</li>
+						</ul>
+					</nav>
+				</aside>
 				
 				<main class="col-9" style="overflow-y:scroll;">
 				

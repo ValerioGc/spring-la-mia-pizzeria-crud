@@ -24,7 +24,8 @@ public class PizzaController {
 	
 	@Autowired
 	private PizzaService pizzaService;
-	
+
+// index
 	@GetMapping
 	public String index(Model model) {
 		
@@ -34,21 +35,32 @@ public class PizzaController {
 		return "index";
 	}
 	
+// home
 	@GetMapping("/home")
 	public String goHome(Model model) {
 		model.addAttribute("routeName", "home");
 		return "home" ;
 	}
 	
-	
-	@GetMapping("/pizza/{id}")
-	public String editPizza(@PathVariable("id") int id) {
-		
+// Show
+	@GetMapping("/pizza")
+	public String editPizza(Model model) {
+		model.addAttribute("routeName", "show");
 		return "pizza" ;
+	}
+	@GetMapping("/pizza/{id}")
+	public String editPizza1(@PathVariable("id") int id, Model model) {
+		
+		Optional<Pizza> optPizza = pizzaService.findPizzaById(id);
+		Pizza pizza = optPizza.get();
+		model.addAttribute("pizza", pizza);
+		model.addAttribute("routeName", "edit");
+		
+		return "pizza";
 	}
 	
 	
-	
+// Create	
 	@GetMapping("/pizza/newPizza")
 	public String createPizza(Model model) {
 		
@@ -61,23 +73,22 @@ public class PizzaController {
 	
 	@PostMapping("/pizza/newPizza")
 	public String storePizza(@Valid @ModelAttribute("pizza") Pizza pizza) {
-		
 		pizzaService.save(pizza);
 		return "redirect:/";
 	}
 	
+// Edit
 	@GetMapping("/pizza/edit/{id}")
 	public String editPizza(@PathVariable("id") int id, Model model) {
 		
 		Optional<Pizza> optPizza = pizzaService.findPizzaById(id);
 		Pizza pizza = optPizza.get();
-		
 		model.addAttribute("pizza", pizza);
 		model.addAttribute("routeName", "edit");
 		
 		return "editPizza";
 	}
-	
+
 	@PostMapping("/pizza/edit")
 	public String updatePizza(@Valid @ModelAttribute("pizza") Pizza pizza) {
 		
@@ -86,6 +97,7 @@ public class PizzaController {
 		return "redirect:/";
 	}
 	
+// Delete
 	@GetMapping("/pizza/delete/{id}")
 	public String deletePizza(@PathVariable("id") int id) {
 		

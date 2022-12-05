@@ -10,29 +10,29 @@
 		<div class="container-fluid" style="height:100vh;width:100vw;">
 			<h1 class="text-primary p-3">Pizzeria Java</h1>
 			<hr/>
-			<div class="px-5 py-3 row justify-content-center align-items-stretch flex-nowrap bg-light" style="height:80vh;width:100vw;">
+			<div th:if="${!pizzas.isEmpty()}" class="px-5 py-3 row justify-content-center align-items-stretch flex-nowrap bg-light" style="height:80vh;width:100vw;">
 				<aside class="aside col-2 bg-secondary" style="height:100%">
-					<h3>Operazioni:</h3>
+					<h3 class="py-2">Operazioni:</h3>
 					<nav>
 						<ul class="list-group">
 							<li th:class="'list-group-item ' + ${routeName.equals('home') ? 'active' : ''}">	
-								<a href="/home" class="d-inline-block w-100 text-decoration-none">Homepage</a>
+								<a href="/home" class="d-inline-block w-100 text-decoration-none text-dark">Homepage</a>
 							</li>
 							<li th:class="'list-group-item ' + ${routeName.equals('index') ? 'active' : ''}">
-								<a href="/" class="d-inline-block w-100 text-decoration-none text-light">Vedi tutte le pizze</a>
+								<a href="/" class="d-inline-block w-100 text-decoration-none text-dark">Vedi tutte le pizze</a>
 							</li>
 							<li th:class="'list-group-item ' + ${routeName.equals('new') ? 'active' : ''}">
 								<i class="fa-solid fa-pen-to-square"></i>
-								<a href="/pizza/newPizza" class="d-inline-block w-100 text-decoration-none">Crea una nuova pizza</a>
+								<a href="/pizza/newPizza" class="d-inline-block w-100 text-decoration-none text-dark">Crea una nuova pizza</a>
 							</li>
 						</ul>
 					</nav>
 				</aside>
 				<main class="col-9" style="overflow-y:scroll; position:relative;">
-					<h3 class="m-0 text-center bg-dark text-light py-2" style="position:sticky;top:0;width:100%;border-bottom:1px solid #fff;">Pizze disponibili:</h3>
+					<h3 class="m-0 text-center bg-dark text-light py-2" style="position:sticky;top:0;width:100%;transition:all 0.5s linear;border-bottom:1px solid #fff;">Pizze disponibili:</h3>
 					<table class="py-1 table table-dark table-striped text-start">
 						<thead>
-							<tr>
+							<tr style="position:sticky;top:0;width:100%;border-bottom:1px solid #fff;transition:all 0.5s linear;">
 								<th>Nome</th>
 								<th>Descrizione</th>
 								<th class="text-start">Prezzo</th>
@@ -48,7 +48,7 @@
 				 					<a class="btn btn-primary" th:href="@{/pizza/{id} (id=${pizza.id})}">Dettagli</a> 
 								</td>
 								<td style="width:10%">
-									<a th:href="@{/pizza/editPizza/{id}(id=${pizza.id})}" class="btn btn-success">Modifica</a>
+									<a th:href="@{/pizza/edit/{id}(id=${pizza.id})}" class="btn btn-success">Modifica</a>
 								</td>
 								<td  style="width:10%">
 									<a th:href="@{/pizza/delete/{id}(id=${pizza.id})}" class="btn btn-danger">Elimina</a>
@@ -58,7 +58,7 @@
 					</table> 
 				</main>
 			</div>		
-			<!--  <h2>Nessuna pizza trovata</h2> -->
+			<h2 th:if="${pizzas.isEmpty()}">Nessuna pizza trovata</h2>
 		</div>
 					
 		<script th:src="@{/webjars/bootstrap/5.1.3/js/bootstrap.bundle.min.js}"></script>	
