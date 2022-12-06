@@ -1,13 +1,11 @@
 <!--          Aside nav         -->
-	<aside  th:fragment="baseLayout(routeName)" 
+	<aside  th:fragment="asideNav(routeName)" 
 			class="aside col-2 bg-secondary" 
-			style="height:100%"
-	>
+			style="height:100%">
 		<h3 class="py-2">Operazioni:</h3>
 		<nav>
 			<ul class="list-group">
 				<li th:class="'list-group-item ' + ${routeName.equals('home') ? 'active' : ''}">	
-
 					<a href="/home" class="d-inline-block w-100 text-decoration-none text-dark"><i class="mx-2 fa-solid fa-house"></i>Homepage</a>
 				</li>
 				<li th:class="'list-group-item ' + ${routeName.equals('index') ? 'active' : ''}">

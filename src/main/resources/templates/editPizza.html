@@ -5,29 +5,14 @@
 		<title>Modifica Pizza</title>
 		<link th:rel="stylesheet" th:href="@{/webjars/bootstrap/5.1.3/css/bootstrap.min.css}"/>
 		<link th:rel="stylesheet" th:href="@{/css/scrollbar.css}"/>
+		<link th:rel="stylesheet" th:href="@{/webjars/font-awesome/6.2.0/css/all.min.css}"/>
 	</head>
 	<body style="overflow-y:hidden">
 		<div class="container-fluid" style="height:100vh;width:100vw;">
 			<h1 class="text-primary p-3">Modifica Pizza:</h1>
 			<hr/>
 			<div class="px-5 py-3 row justify-content-center align-items-stretch flex-nowrap bg-light" style="height:80vh;width:100vw;">
-				<aside class="aside col-2 bg-secondary" style="height:100%">
-					<h3 class="py-2">Operazioni:</h3>
-					<nav>
-						<ul class="list-group">
-							<li th:class="'list-group-item ' + ${routeName.equals('home') ? 'active' : ''}">	
-								<a href="/home" class="d-inline-block w-100 text-decoration-none text-dark">Homepage</a>
-							</li>
-							<li th:class="'list-group-item ' + ${routeName.equals('index') ? 'active' : ''}">
-								<a href="/" class="d-inline-block w-100 text-decoration-none text-dark">Vedi tutte le pizze</a>
-							</li>
-							<li th:class="'list-group-item ' + ${routeName.equals('new') ? 'active' : ''}">
-								<i class="fa-solid fa-pen-to-square"></i>
-								<a href="/pizza/newPizza" class="d-inline-block w-100 text-decoration-none text-dark">Crea una nuova pizza</a>
-							</li>
-						</ul>
-					</nav>
-				</aside>
+				<th:block th:replace="fragments :: asideNav(${routeName})"></th:block>
 				<main class="col-9" style="overflow-y:scroll;">
 					<h3 class="m-0 text-center bg-dark text-light py-2" style="position:sticky;top:0;width:100%;transition:all 0.5s linear;border-bottom:1px solid #fff;">Modifica Pizza:</h3>
 
