@@ -8,27 +8,26 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Lob;
 import jakarta.persistence.Table;
 
-
 @Entity
-@Table(name = "pizza")
-public class Pizza {
-	
+@Table(name = "drink")
+public class Drink {
+		
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	
-	@Column
+	@Column(nullable = false)
 	private String name;
 	
-	@Column
+	@Column(nullable = true)
 	@Lob
 	private String description;
 	
-	@Column
+	@Column()
 	private int price;
 	
-	public Pizza() { }
-	public Pizza(String name, String description, int price ) {
+	public Drink() { }
+	public Drink(String name, String description, int price ) {
 		setName(name);
 		setDescription(description);
 		setPrice(price);
@@ -72,6 +71,4 @@ public class Pizza {
 			+ "\nDescription: " + getDescription()
 			+ "\nPrice: " + getPrice();
 	}
-	
 }
-

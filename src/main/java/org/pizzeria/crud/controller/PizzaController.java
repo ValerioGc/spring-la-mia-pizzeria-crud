@@ -31,7 +31,7 @@ public class PizzaController {
 		
 		List<Pizza> pizzas = pizzaService.findAll();
 		model.addAttribute("pizzas", pizzas);
-		model.addAttribute("routeName", "index");
+		model.addAttribute("routeName", "pizza");
 		return "index";
 	}
 	
@@ -44,12 +44,12 @@ public class PizzaController {
 	
 // Show
 	@GetMapping("/pizza")
-	public String editPizza(Model model) {
+	public String getPizza(Model model) {
 		model.addAttribute("routeName", "show");
 		return "pizza" ;
 	}
 	@GetMapping("/pizza/{id}")
-	public String editPizza1(@PathVariable("id") int id, Model model) {
+	public String getPizza1(@PathVariable("id") int id, Model model) {
 		
 		Optional<Pizza> optPizza = pizzaService.findPizzaById(id);
 		Pizza pizza = optPizza.get();

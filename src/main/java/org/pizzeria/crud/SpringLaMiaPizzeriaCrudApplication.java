@@ -1,6 +1,8 @@
 package org.pizzeria.crud;
 
+import org.pizzeria.crud.pojo.Drink;
 import org.pizzeria.crud.pojo.Pizza;
+import org.pizzeria.crud.serv.DrinkService;
 import org.pizzeria.crud.serv.PizzaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
@@ -9,12 +11,19 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
 public class SpringLaMiaPizzeriaCrudApplication implements CommandLineRunner{
+	
 	@Autowired
 	private PizzaService pizzaService;
+	
+	@Autowired
+	private DrinkService drinkService;
+	
+	
 	
 	public static void main(String[] args) {
 		SpringApplication.run(SpringLaMiaPizzeriaCrudApplication.class, args);
 	}
+	
 	
 	@Override
 	public void run(String... args) throws Exception {
@@ -47,5 +56,28 @@ public class SpringLaMiaPizzeriaCrudApplication implements CommandLineRunner{
 		pizzaService.save(p12);
 		pizzaService.save(p13);
 		
+		Drink d1 = new Drink("coca cola", "lorem ipsum", 2);
+		Drink d2 = new Drink("fanta", "lorem ipsumm", 2);
+		Drink d3 = new Drink("pepsi", "lorem ipsumm", 2);
+		Drink d4 = new Drink("vino", "lorem ipsumm", 16);
+		Drink d5 = new Drink("sprite", "lorem ipsumm", 2);
+		Drink d6 = new Drink("peroni", "lorem pizzum", 2);
+		Drink d7 = new Drink("nastro azzurro", "lorem ipsum", 3);
+		Drink d8 = new Drink("heineken", "lorem ipsum", 3);
+		Drink d9 = new Drink("acqua", "lorem ipsum", 1);
+		Drink d10 = new Drink("chinotto", "lorem ipsum", 2);
+
+
+		drinkService.save(d1);
+		drinkService.save(d2);
+		drinkService.save(d3);
+		drinkService.save(d4);
+		drinkService.save(d5);
+		drinkService.save(d6);
+		drinkService.save(d7);
+		drinkService.save(d8);
+		drinkService.save(d9);
+		drinkService.save(d10);
+
 	}
 }
