@@ -22,7 +22,7 @@
 				<main class="col-9" style="overflow-y:scroll;">
 					<h3 class="m-0 text-center bg-dark text-light py-2" style="position:sticky;top:0;width:100%;transition:all 0.5s linear;border-bottom:1px solid #fff;">Modifica Drink:</h3>
 
-					<form class="card p-3 my-3 w-75 m-auto" method="POST" action="/pizza/editPizza" th:object="${drink}">
+					<form class="card p-3 my-3 w-75 m-auto" method="POST" action="/drink/editDrink" th:object="${drink}">
 			
 						<label for="pName">Nome</label>
 						<input type="text" id="pName" name="pName" th:field="*{name}" />

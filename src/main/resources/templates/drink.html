@@ -30,7 +30,7 @@
 							<li class="text-decoration-none" style="width:15%" th:text="*{price} +  ' &euro;'"></li>
 						</ul>
 						
-						<a href="@{/drinks/edit/{id}(id=${drink.id})}" class=" btn-success btn">Modifica</a>
+						<a href="@{/edit/{id}(id=${drink.id})}" class=" btn-success btn">Modifica</a>
 						
 						<a href="@{/drinks/delete/{id}(id=${drink.id})}" class="btn-success btn">Elimina</a>
 					</div>

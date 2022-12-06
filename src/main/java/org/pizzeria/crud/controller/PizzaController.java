@@ -43,11 +43,6 @@ public class PizzaController {
 	}
 	
 // Show
-	@GetMapping("/pizza")
-	public String getPizza(Model model) {
-		model.addAttribute("routeName", "show");
-		return "pizza" ;
-	}
 	@GetMapping("/pizza/{id}")
 	public String getPizza1(@PathVariable("id") int id, Model model) {
 		

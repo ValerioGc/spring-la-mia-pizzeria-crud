@@ -36,13 +36,7 @@ public class DrinkController {
 	}
 	
 // Show
-	@GetMapping("/drink")
-	public String getDrink(Model model) {
-		model.addAttribute("routeName", "showDrink");
-		return "drink" ;
-	}
-	
-	@GetMapping("/drink/{id}")
+	@GetMapping("/{id}")
 	public String getDrink1(@PathVariable("id") int id, Model model) {
 		
 		Optional<Drink> optDrink = drinkService.findDrinkById(id);
@@ -68,7 +62,7 @@ public class DrinkController {
 	@PostMapping("/newDrink")
 	public String storeDrink(@Valid @ModelAttribute("drink") Drink drink) {
 		drinkService.save(drink);
-		return "redirect:/";
+		return "redirect:/drinks";
 	}
 	
 // Edit
@@ -88,7 +82,7 @@ public class DrinkController {
 		
 		drinkService.save(drink);
 		
-		return "redirect:/";
+		return "redirect:/drinks";
 	}
 	
 // Delete
@@ -97,7 +91,7 @@ public class DrinkController {
 		
 		drinkService.deleteDrinkById(id);
 		
-		return "redirect:/";
+		return "redirect:/drinks";
 	}
 
 }
