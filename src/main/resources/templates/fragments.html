@@ -1,7 +1,6 @@
-<!--          Aside nav         -->
-	<aside  th:fragment="asideNav(routeName)" 
-			class="aside col-2 bg-secondary" 
-			style="height:100%">
+<!-- Aside NavBar -->
+
+	<aside  th:fragment="asideNav(routeName)" class="aside col-2 bg-secondary h-100">
 		<h3 class="py-2">Operazioni:</h3>
 		<nav>
 			<ul class="list-group">
@@ -12,14 +11,41 @@
 					<a href="/" class="d-inline-block w-100 text-decoration-none text-dark"><i class="mx-2 fa-solid fa-list"></i>Vedi tutte le pizze</a>
 				</li>
 				<li th:class="'list-group-item ' + ${routeName.equals('new') ? 'active' : ''}">
-
 					<a href="/pizza/newPizza" class="d-inline-block w-100 text-decoration-none text-dark"><i class="fa-solid mx-2 fa-plus"></i>Crea una nuova pizza</a>
 				</li>
 			</ul>
 		</nav>
 	</aside>
 	
-<!-- ------------------------ -->
+<!-------------------------------------------->
+
+<!-- Header pagina --> 
+	<header th:fragment="header()">
+		<h1 class="text-primary p-3">Pizzeria Java</h1>
+		<hr/>
+	</header>
+			
+<!-------------------------------------------->
+
+<!-- Form Layout --> 
+	<form th:fragment="form(pizza, action)" class="card p-3 my-3 w-75 m-auto" method="POST" action="action" th:object="${pizza}">
+		
+		<label for="pName">Nome</label>
+		<input type="text" id="pName" name="pName" th:field="*{name}" />
+		
+		<label for="pDesc">Descrizione</label>
+		<input type="text" id="pDesc" name="pDesc" th:field="*{description}"/>
+		
+		
+		<label for="pPrice">Prezzo</label>
+		<input type="number" id="pPrice" name="pPrice" step="1"th:field="*{price}"/>
+		
+		<button type="submit">Conferma</button>
+	
+	</form>
+
+
+<!-------------------------------------------->
 
 <!-- Main Layout --> 
 	<div th:fragment="baseLayout(routeName)" class="container-fluid" style="height:100vh;width:100vw;" >
