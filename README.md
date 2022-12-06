@@ -10,7 +10,7 @@
 <table align="center">
   <thead>
     <tr>
-      <th colspan="4">Languages</th>
+      <th colspan="3">Languages</th>
       <th colspan="2">Framework</th>
     </tr>
   </thead>
@@ -23,9 +23,6 @@
         <img align="center" src="https://github.com/ValerioGc/ValerioGc/blob/64e651615d68fb71ddfe78c747f2913d1ec29607/assets/skills&tools/skills/html.svg" width="36" height="36" alt="HTML5" />
       <td>
         <img align="center" src="https://github.com/ValerioGc/ValerioGc/blob/64e651615d68fb71ddfe78c747f2913d1ec29607/assets/skills&tools/skills/css.svg" width="36" height="36" align="center" alt="css">
-      </td>
-      <td>
-        <img align="center" src="https://github.com/ValerioGc/ValerioGc/blob/64e651615d68fb71ddfe78c747f2913d1ec29607/assets/skills&tools/skills/javascript.svg" width="36" height="36" align="center" alt="Javascript">
       </td>
       <td>
         <img align="center" src="https://github.com/ValerioGc/ValerioGc/blob/64e651615d68fb71ddfe78c747f2913d1ec29607/assets/skills&tools/frameworks/spring.svg" width="36" height="36" align="center" alt="Spring">
@@ -43,9 +40,6 @@
       </td>
       <td>
         <a href="https://developer.mozilla.org/en-US/docs/Glossary/css">CSS</a>
-      </td>
-      <td>
-        <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript">Javascript</a>
       </td>
       <td>
         <a href="https://spring.io/" target="_blank" rel="noreferrer">Spring</a>
