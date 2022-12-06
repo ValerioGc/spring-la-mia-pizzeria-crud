@@ -1,6 +1,7 @@
-<!-- Aside NavBar -->
 
-	<aside  th:fragment="asideNav(routeName)" class="aside col-2 bg-secondary h-100">
+
+<!-- Aside NavBar -->
+	<aside th:fragment="asideNav(routeName)" class="aside col-2 bg-secondary h-100">
 		<h3 class="py-2">Operazioni:</h3>
 		<nav>
 			<ul class="list-group">
@@ -13,10 +14,10 @@
 				<li th:class="'list-group-item ' + ${routeName.equals('new') ? 'active' : ''}">
 					<a href="/pizza/newPizza" class="d-inline-block w-100 text-decoration-none text-dark"><i class="fa-solid fa-pizza-slice mx-2"></i>Crea una nuova pizza</a>
 				</li>
-				<li th:class="'list-group-item ' + ${routeName.equals('drinks') ? 'active' : ''}">
+				<li th:class="'list-group-item ' + ${routeName.equals('drink') ? 'active' : ''}">
 					<a href="/drink" class="d-inline-block w-100 text-decoration-none text-dark"><i class="mx-2 fa-solid fa-list"></i>Vedi tutti i drinks</a>
 				</li>
-				<li th:class="'list-group-item ' + ${routeName.equals('newDrinks') ? 'active' : ''}">
+				<li th:class="'list-group-item ' + ${routeName.equals('newDrink') ? 'active' : ''}">
 					<a href="/drink/newDrink" class="d-inline-block w-100 text-decoration-none text-dark"><i class="fa-solid fa-martini-glass mx-2"></i>Crea un nuovo drink</a>
 				</li>
 			</ul>
@@ -31,71 +32,60 @@
 		<hr/>
 	</header>
 			
-<!-------------------------------------------->
-
-<!-- Form Layout --> 
-	<form th:fragment="form(pizza, action)" class="card p-3 my-3 w-75 m-auto" method="POST" action="action" th:object="${pizza}">
-		
-		<label for="pName">Nome</label>
-		<input type="text" id="pName" name="pName" th:field="*{name}" />
-		
-		<label for="pDesc">Descrizione</label>
-		<input type="text" id="pDesc" name="pDesc" th:field="*{description}"/>
-		
-		
-		<label for="pPrice">Prezzo</label>
-		<input type="number" id="pPrice" name="pPrice" step="1"th:field="*{price}"/>
-		
-		<button type="submit">Conferma</button>
-	
-	</form>
-
 
 <!-------------------------------------------->
 
 <!-- Table Layout -->
 	<table th:fragment="table(obj, objNm)"
-			class="py-3 table table-dark table-striped text-start">
-				<thead>
-					<tr style="position:sticky;top:0;width:100%;border-bottom:1px solid #fff;transition:all 0.5s linear;">
-						<th>Nome</th>
-						<th>Descrizione</th>
-						<th class="text-start">Prezzo</th>
-						<th colspan="3" class="text-center">Azioni:</th>
-					</tr>
-				</thead>
-				<tbody>		
-					<tr th:each="drink : ${obj}" th:object="${drink}">			 
-						<td class="text-capitalize" th:text="*{name}"></td>
-						<td class="text-capitalize" th:text="*{description}"></td>
-						<td style="width:15%" th:text="*{price} +  ' &euro;'"></td>
-						<td style="width:10%">
-		 					<a class="btn btn-primary" th:href="@{'/' + ${objNm} + '/{id}' (id=${drink.id})}">Dettagli</a> 
-						</td>
-						<td style="width:10%">
-							<a th:href="@{'/' + ${objNm} + '/edit/{id}'(id=${drink.id})}" class="btn btn-success">Modifica</a>
-						</td>
-						<td  style="width:10%">
-							<a th:href="@{'/' + ${objNm} + '/delete/{id}'(id=${drink.id})}" class="btn btn-danger">Elimina</a>
-						</td>
-					</tr>
-				</tbody>
-			</table> 
-			
+		   class="py-3 table table-dark table-striped text-start">
+		<thead>
+			<tr style="position:sticky;top:0;width:100%;border-bottom:1px solid #fff;transition:all 0.5s linear;">
+				<th>Nome</th>
+				<th>Descrizione</th>
+				<th class="text-start">Prezzo</th>
+				<th colspan="3" class="text-center">Azioni:</th>
+			</tr>
+		</thead>
+		<tbody>		
+			<tr th:each="drink : ${obj}" th:object="${drink}">			 
+				<td class="text-capitalize" th:text="*{name}"></td>
+				<td class="text-capitalize" th:text="*{description}"></td>
+				<td style="width:15%" th:text="*{price} +  ' &euro;'"></td>
+				<td style="width:10%">
+ 					<a class="btn btn-primary" th:href="@{'/' + ${objNm} + '/{id}' (id=${drink.id})}">Dettagli</a> 
+				</td>
+				<td style="width:10%">
+					<a th:href="@{'/' + ${objNm} + '/edit/{id}'(id=${drink.id})}" class="btn btn-success">Modifica</a>
+				</td>
+				<td  style="width:10%">
+					<a th:href="@{'/' + ${objNm} + '/delete/{id}'(id=${drink.id})}" class="btn btn-danger">Elimina</a>
+				</td>
+			</tr>
+		</tbody>
+	</table> 
+		
 <!-------------------------------------------->
 
-<!-- Head -->
-	<span th:fragment="headMain(title)">	
-		<meta charset="ISO-8859-1">
-		<title>[[${title}]]</title>
-		<link th:rel="stylesheet" th:href="@{/webjars/bootstrap/5.1.3/css/bootstrap.min.css}"/>
-		<link th:rel="stylesheet" th:href="@{/css/common.css}"/>
-		<link th:rel="stylesheet" th:href="@{/css/scrollbar.css}"/>
-		<link th:rel="stylesheet" th:href="@{/webjars/font-awesome/6.2.0/css/all.min.css}"/> 
-	<span>
-	
+<!-- Details -->
+	<div th:fragment="detailsSection(obj, element)" 
+	th:object="${obj}" 
+	class="p-3 border-2 m-auto w-50 pt-3 mt-5">
+		<h2>Dettaglio [[${element}]]:</h2>
+		<ul>			 
+			<li class="text-capitalize text-decoration-none" th:text="*{name}"></li>
+			<li class="text-capitalize text-decoration-none" th:text="*{description}"></li>
+			<li class="text-decoration-none" style="width:15%" th:text="*{price} +  ' &euro;'"></li>
+		</ul>
+		<span>
+			<a th:href="@{'/' + ${element} + '/edit/{id}' (id=*{id})}" class=" btn-success btn">Modifica</a>				
+			<a th:href="@{'/' + ${element} + '/delete/{id}' (id=*{id})}" class="btn-success btn">Elimina</a>
+		</span>
+	</div>
+		
 <!-------------------------------------------->
-	
+
+
+
 <!-- Head -->
 	<html th:fragment="headMain(title)">	
 		<meta charset="ISO-8859-1">
@@ -106,5 +96,3 @@
 		<link th:rel="stylesheet" th:href="@{/webjars/font-awesome/6.2.0/css/all.min.css}"/> 
 	<html>
 	
-
-<!-------------------------------------------->

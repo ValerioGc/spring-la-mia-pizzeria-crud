@@ -54,7 +54,7 @@ public class DrinkController {
 		
 		Drink drink = new Drink();
 		model.addAttribute("drink", drink);
-		model.addAttribute("routeName", "new");
+		model.addAttribute("routeName", "newDrink");
 		
 		return "newDrink";
 	}
