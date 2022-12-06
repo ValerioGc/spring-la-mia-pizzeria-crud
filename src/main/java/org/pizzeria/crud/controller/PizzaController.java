@@ -48,10 +48,11 @@ public class PizzaController {
 		
 		Optional<Pizza> optPizza = pizzaService.findPizzaById(id);
 		Pizza pizza = optPizza.get();
-		model.addAttribute("pizza", pizza);
-		model.addAttribute("routeName", "edit");
+		model.addAttribute("obj", pizza);
+		model.addAttribute("routeName", "show");
+		model.addAttribute("element", "pizza");
 		
-		return "pizza";
+		return "show";
 	}
 	
 	

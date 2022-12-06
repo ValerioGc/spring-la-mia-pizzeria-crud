@@ -4,7 +4,6 @@ import java.util.List;
 import java.util.Optional;
 
 import org.pizzeria.crud.pojo.Drink;
-import org.pizzeria.crud.pojo.Pizza;
 import org.pizzeria.crud.serv.DrinkService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -18,7 +17,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import jakarta.validation.Valid;
 
 @Controller
-@RequestMapping("/drinks")
+@RequestMapping("/drink")
 public class DrinkController {
 
 	@Autowired
@@ -30,7 +29,7 @@ public class DrinkController {
 		
 		List<Drink> drinks = drinkService.findAll();
 		model.addAttribute("drinks", drinks);
-		model.addAttribute("routeName", "drinks");
+		model.addAttribute("routeName", "drink");
 		
 		return "index-drinks";
 	}
@@ -41,10 +40,11 @@ public class DrinkController {
 		
 		Optional<Drink> optDrink = drinkService.findDrinkById(id);
 		Drink drink = optDrink.get();
-		model.addAttribute("drink", drink);
+		model.addAttribute("obj", drink);
+		model.addAttribute("element", "drink");
 		model.addAttribute("routeName", "showDrink");
 		
-		return "drink";
+		return "show";
 	}
 		
 		
@@ -62,7 +62,7 @@ public class DrinkController {
 	@PostMapping("/newDrink")
 	public String storeDrink(@Valid @ModelAttribute("drink") Drink drink) {
 		drinkService.save(drink);
-		return "redirect:/drinks";
+		return "redirect:/drink";
 	}
 	
 // Edit
@@ -82,7 +82,7 @@ public class DrinkController {
 		
 		drinkService.save(drink);
 		
-		return "redirect:/drinks";
+		return "redirect:/drink";
 	}
 	
 // Delete
@@ -91,7 +91,7 @@ public class DrinkController {
 		
 		drinkService.deleteDrinkById(id);
 		
-		return "redirect:/drinks";
+		return "redirect:/drink";
 	}
 
 }
