@@ -53,10 +53,12 @@ public class DrinkController {
 	public String createDrink(Model model) {
 		
 		Drink drink = new Drink();
-		model.addAttribute("drink", drink);
+		model.addAttribute("obj", drink);
 		model.addAttribute("routeName", "newDrink");
+		model.addAttribute("element", "drink");
+		model.addAttribute("action", "/drink/newDrink");
 		
-		return "newDrink";
+		return "new";
 	}
 	
 	@PostMapping("/newDrink")

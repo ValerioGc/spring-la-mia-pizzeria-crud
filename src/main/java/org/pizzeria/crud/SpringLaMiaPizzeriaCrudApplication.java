@@ -33,14 +33,14 @@ public class SpringLaMiaPizzeriaCrudApplication implements CommandLineRunner{
 		Pizza p3 = new Pizza("quattro formaggi", "lorem ipsum", 12);
 		Pizza p4 = new Pizza("margherita", "lorem pizzum", 6);
 		Pizza p5 = new Pizza("capricciosa", "lorem pizzum", 6);
-		Pizza p6 = new Pizza("bufala", "lorem pizzum", 15);
+		Pizza p6 = new Pizza("bu", "lorem pizzum", 15);
 		Pizza p7 = new Pizza("norcina", "lorem pizzum", 17);
 		Pizza p8 = new Pizza("crostino", "lorem ipsum", 12);
 		Pizza p9 = new Pizza("margherita con bufala", "lorem pizzum", 16);
 		Pizza p10 = new Pizza("diavola", "lorem pizzum", 19);
-		Pizza p11 = new Pizza("crostino", "lorem ipsum", 12);
-		Pizza p12= new Pizza("margherita con bufala", "lorem pizzum", 16);
-		Pizza p13 = new Pizza("diavola", "lorem pizzum", 19);
+		Pizza p11 = new Pizza("noci e pere", "lorem ipsum", 12);
+		Pizza p12= new Pizza("margherit con bufala", "lorem pizzum", 16);
+		Pizza p13 = new Pizza("diavol", "lorem pizzum", 19);
 		
 		pizzaService.save(p1);
 		pizzaService.save(p2);

@@ -82,9 +82,19 @@
 		</span>
 	</div>
 		
+		
+		
 <!-------------------------------------------->
 
-
+<!-- Errors msg -->
+	<ul th:fragment="errorMsg(errors)" th:if="${errors}" class="list-group">
+		<li th:each="error : ${errors}" class="p-3 alert alert-danger">
+			[[${error.defaultMessage}]]
+		</li>
+	</ul>
+	
+	
+<!-------------------------------------------->
 
 <!-- Head -->
 	<html th:fragment="headMain(title)">	

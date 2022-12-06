@@ -9,11 +9,13 @@ import org.pizzeria.crud.serv.PizzaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import jakarta.validation.Valid;
 
@@ -44,7 +46,7 @@ public class PizzaController {
 	
 // Show
 	@GetMapping("/pizza/{id}")
-	public String getPizza1(@PathVariable("id") int id, Model model) {
+	public String getPizza(@PathVariable("id") int id, Model model) {
 		
 		Optional<Pizza> optPizza = pizzaService.findPizzaById(id);
 		Pizza pizza = optPizza.get();
@@ -61,14 +63,23 @@ public class PizzaController {
 	public String createPizza(Model model) {
 		
 		Pizza pizza = new Pizza();
-		model.addAttribute("pizza", pizza);
+		model.addAttribute("obj", pizza);
 		model.addAttribute("routeName", "new");
+		model.addAttribute("element", "pizza");
+		model.addAttribute("action", "/pizza/newPizza");
 		
-		return "newPizza";
+		return "new";
 	}
 	
 	@PostMapping("/pizza/newPizza")
-	public String storePizza(@Valid @ModelAttribute("pizza") Pizza pizza) {
+	public String storePizza(@Valid @ModelAttribute("pizza") Pizza pizza, BindingResult bindingResult, RedirectAttributes redirectAttributes) {
+	
+		
+		if(bindingResult.hasErrors()) {
+			redirectAttributes.addFlashAttribute("errors", bindingResult.getAllErrors());
+			return "redirect:/pizza/newPizza";
+		}
+		
 		pizzaService.save(pizza);
 		return "redirect:/";
 	}
@@ -86,7 +97,12 @@ public class PizzaController {
 	}
 
 	@PostMapping("/pizza/edit")
-	public String updatePizza(@Valid @ModelAttribute("pizza") Pizza pizza) {
+	public String updatePizza(@Valid @ModelAttribute("pizza") Pizza pizza, BindingResult bindingResult, RedirectAttributes redirectAttributes) {
+		
+		if(bindingResult.hasErrors()) {
+			redirectAttributes.addFlashAttribute("errors", bindingResult.getAllErrors());
+			return "redirect:/pizza/editPizza/" + pizza.getId();
+		}
 		
 		pizzaService.save(pizza);
 		
