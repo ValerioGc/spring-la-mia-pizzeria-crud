@@ -7,6 +7,9 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Lob;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.Max;
+import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.NotNull;
 
 @Entity
 @Table(name = "drink")
@@ -17,13 +20,17 @@ public class Drink {
 	private int id;
 	
 	@Column(nullable = false)
+	@NotNull(message = "Il nome della pizza non deve essere vuoto")
 	private String name;
 	
 	@Column(nullable = true)
 	@Lob
 	private String description;
 	
-	@Column()
+	@Column
+	@Min(value = 1)
+	@Max(value = 100)
+	@NotNull(message = "Il prezzo deve essere superiore a 0 euro")
 	private int price;
 	
 	public Drink() { }

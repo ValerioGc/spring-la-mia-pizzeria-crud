@@ -20,7 +20,7 @@ public class Pizza {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	
-	@Column
+	@Column(nullable = false)
 	@NotNull(message = "Il nome della pizza non deve essere vuoto")
 	private String name;
 	
