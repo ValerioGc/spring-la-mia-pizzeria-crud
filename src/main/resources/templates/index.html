@@ -5,6 +5,8 @@
 		<title>Pizzeria</title>
 		<link th:rel="stylesheet" th:href="@{/webjars/bootstrap/5.1.3/css/bootstrap.min.css}"/>
 		<link th:rel="stylesheet" th:href="@{/css/scrollbar.css}"/>
+		<link th:rel="stylesheet" th:href="@{/webjars/font-awesome/6.2.0/css/all.min.css}"/>
+		
 	</head>
 	<body style="overflow-y:hidden">
 		<div class="container-fluid" style="height:100vh;width:100vw;">
@@ -16,14 +18,15 @@
 					<nav>
 						<ul class="list-group">
 							<li th:class="'list-group-item ' + ${routeName.equals('home') ? 'active' : ''}">	
-								<a href="/home" class="d-inline-block w-100 text-decoration-none text-dark">Homepage</a>
+
+								<a href="/home" class="d-inline-block w-100 text-decoration-none text-dark"><i class="mx-2 fa-solid fa-house"></i>Homepage</a>
 							</li>
 							<li th:class="'list-group-item ' + ${routeName.equals('index') ? 'active' : ''}">
-								<a href="/" class="d-inline-block w-100 text-decoration-none text-dark">Vedi tutte le pizze</a>
+								<a href="/" class="d-inline-block w-100 text-decoration-none text-dark"><i class="mx-2 fa-solid fa-list"></i>Vedi tutte le pizze</a>
 							</li>
 							<li th:class="'list-group-item ' + ${routeName.equals('new') ? 'active' : ''}">
-								<i class="fa-solid fa-pen-to-square"></i>
-								<a href="/pizza/newPizza" class="d-inline-block w-100 text-decoration-none text-dark">Crea una nuova pizza</a>
+
+								<a href="/pizza/newPizza" class="d-inline-block w-100 text-decoration-none text-dark"><i class="fa-solid mx-2 fa-plus"></i>Crea una nuova pizza</a>
 							</li>
 						</ul>
 					</nav>
@@ -51,6 +54,7 @@
 									<a th:href="@{/pizza/edit/{id}(id=${pizza.id})}" class="btn btn-success">Modifica</a>
 								</td>
 								<td  style="width:10%">
+									
 									<a th:href="@{/pizza/delete/{id}(id=${pizza.id})}" class="btn btn-danger">Elimina</a>
 								</td>
 							</tr>
