@@ -1,55 +1,39 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 	<head>
-<th:block th:replace="fragments :: headMain('Ricerca')"></th:block>
+		<th:block th:replace="fragments :: headMain('Ricerca')"></th:block>
 	</head>
-	<body style="overflow-y:hidden">
+	<body>
 		<div class="container-fluid main-container">
 
-		<!-- Header --> 
+			<!-- Header --> 
 			<th:block th:replace="fragments :: header()"></th:block>
 
-			<div class="px-5 py-3 row justify-content-center align-items-stretch flex-nowrap bg-light w-100" style="height:80vh;">
+			<div class="container-app px-5 py-3 row justify-content-center align-items-stretch flex-nowrap bg-light w-100">
 			
-			<!-- Aside NavBar --> 
+				<!-- Aside NavBar --> 
 				<th:block th:replace="fragments :: asideNav(${routeName})"></th:block>
 				
 				<main class="col-9">
 					
-				<!-- Header main title -->
-					<th:block th:replace="fragments :: mainTitle('Cerca elementi')"></th:block>  
+					<!--  main title -->
+					<th:block th:replace="fragments :: mainTitle('Ricerca')"></th:block>  
 
+					<!-- Search -->
+					<div>
+						<th:block th:replace="fragments :: srcBar(${query})"></th:block>  
+					</div>
 
-				<!-- Search -->
-					<form class="text-center my-3 py-3">
-					
-						<input type="text" name="query" th:value="${query}" class="w-50 py-2 m-auto form-control" placeholder="Inserisci il nome da cercare">
+					<!-- Results -->
+					<div th:if="${!obj.isEmpty()} AND ${query}" >
 				
-						<input type="submit" value="SEARCH" class="btn btn-primary my-3">
-					</form>
-
-				
-				<!-- Results -->
-					<div class="col card">
-						<table th:if="${!obj.isEmpty()} AND ${query}"  class="table table-dark">
-							<tr>
-								<th>Nome</th>
-								<th>Descrizione</th>
-								<th>Prezzo</th>
-							</tr>
+						<!--  Index Table  -->	
+						<th:block th:replace="fragments :: table(${obj},  ${routeName}, 'src')"></th:block>
 							
-							<tr th:each="pizza : ${obj}" th:object="${pizza}">
-								<td th:text="*{name}"></td>
-								<td th:text="*{description}"></td>
-								<td> [[*{price}]] &euro;</td>
-							</tr>
-						</table>
-						
 						<h3 th:if="${obj.isEmpty()}" class="text-center text-danger">Non ci sono pizze al momento</h3>
 						
 						<h3 th:if="!${query}" class="text-center text-danger">Usa la barra di ricerca per visualizzare i risultati </h3>
-					</div>
-			
+					</div>			
 				</main>
 			</div>		
 		</div>

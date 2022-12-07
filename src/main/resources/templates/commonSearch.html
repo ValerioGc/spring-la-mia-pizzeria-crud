@@ -1,74 +1,50 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 	<head>
-<th:block th:replace="fragments :: headMain('Ricerca')"></th:block>
+		<th:block th:replace="fragments :: headMain('Ricerca')"></th:block>
 	</head>
-	<body style="overflow-y:hidden">
+	<body>
 		<div class="container-fluid main-container">
 
-		<!-- Header --> 
+			<!-- Header --> 
 			<th:block th:replace="fragments :: header()"></th:block>
 
-			<div class="px-5 py-3 row justify-content-center align-items-stretch flex-nowrap bg-light w-100" style="height:80vh;">
+			<div class="container-app px-5 py-3 row justify-content-center align-items-stretch flex-nowrap bg-light w-100">
 			
-			<!-- Aside NavBar --> 
+				<!-- Aside NavBar --> 
 				<th:block th:replace="fragments :: asideNav(${routeName})"></th:block>
 				
 				<main class="col-9">
 					
-				<!-- Header main title -->
+					<!--  main title -->
 					<th:block th:replace="fragments :: mainTitle('Cerca elementi')"></th:block>  
 
-					<div>
 					<!-- Search -->
+					<div>
 						<th:block th:replace="fragments :: srcBar(${query})"></th:block>  
 					</div>
-						
-					<div class="col card">
 					
-					<!-- PIZZE -->
+					<!-- Results -->						
+					<div class="col card">
 						<div th:if="${!pizzas.isEmpty()} AND ${query}" >
-							<h4>Pizze:</h4>
-							<table  class="table table-dark">
-								<tr>
-									<th>Nome</th>
-									<th>Descrizione</th>
-									<th>Prezzo</th>
-								</tr>
-								
-								<tr th:each="pizza : ${pizzas}" th:object="${pizza}">
-									<td th:text="*{name}"></td>
-									<td th:text="*{description}"></td>
-									<td> [[*{price}]] &euro;</td>
-								</tr>
-							</table>
+							<h4 class="py-3 text-center">Pizze:</h4>
+						
+							<!--  Index Table PIZZE -->	
+							<th:block th:replace="fragments :: table(${pizzas}, ${routeName}, 'src')"></th:block>
 							
 							<h3 th:if="${pizzas.isEmpty()}" class="text-center text-danger">Nessun risultato</h3>
 						</div>
-	
-					<!-- DRINKS -->
+
+						
 						<div th:if="${!drinks.isEmpty()} AND ${query}">	
-							<h4>Drinks:</h4>
-							<table class="table table-dark">
-								<tr>
-									<th>Nome</th>
-									<th>Descrizione</th>
-									<th>Prezzo</th>
-								</tr>
-								
-								<tr th:each="drink : ${drinks}" th:object="${drink}">
-									<td th:text="*{name}"></td>
-									<td th:text="*{description}"></td>
-									<td> [[*{price}]] &euro;</td>
-								</tr>
-							</table>
-						
+							<h4 class="py-3 text-center">Drinks:</h4>
+		
+							<!--  Index Table DRINKS -->
+							<th:block th:replace="fragments :: table(${drinks}, ${routeName}, 'src')"></th:block>
+							
 							<h3 th:if="${drinks.isEmpty()}" class="text-center text-danger">Nessun risultato</h3>
-						</div>
-						
-						<h3 th:if="!${query}" class="text-center text-danger">Usa la barra di ricerca per visualizzare i risultati </h3>
+						</div>		
 					</div>
-			
 				</main>
 			</div>		
 		</div>

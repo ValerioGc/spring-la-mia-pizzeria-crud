@@ -84,7 +84,7 @@
          th:object="${obj}" 
 	     class="p-3 border-2 m-auto w-50 pt-3 mt-5"
      >
-		<h2>Dettaglio [[${element}]]:</h2>
+		<h2>[[${element}]]:</h2>
 		<ul>			 
 			<li class="text-capitalize text-decoration-none" th:text="*{name}"></li>
 			<li class="text-capitalize text-decoration-none" th:text="*{description}"></li>
@@ -131,10 +131,9 @@
 <!-------------------------------------------->
 
 
-<!-- Main Header -->
+<!-- Main Title -->
 	<h3 th:fragment="mainTitle(element)" 
-		class="m-0 text-center bg-dark text-light py-2 mainHeader"
-		style="z-index:99;" >
+		class="mainHeader m-0 text-center bg-dark text-light py-2 ">
 			[[${element}]]:
 	</h3>
 	
