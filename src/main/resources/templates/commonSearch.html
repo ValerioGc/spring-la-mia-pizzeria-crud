@@ -21,20 +21,15 @@
 
 					<div>
 					<!-- Search -->
-						<form class="text-center my-3 py-3">
-						
-							<input type="text" name="query" th:value="${query}" class="w-50 py-2 m-auto form-control" placeholder="Inserisci il nome da cercare">
-					
-							<input type="submit" value="SEARCH" class="btn btn-primary my-3">
-						</form>
+						<th:block th:replace="fragments :: srcBar(${query})"></th:block>  
 					</div>
-				
+						
 					<div class="col card">
 					
 					<!-- PIZZE -->
-						<div>
+						<div th:if="${!pizzas.isEmpty()} AND ${query}" >
 							<h4>Pizze:</h4>
-							<table th:if="${!pizzas.isEmpty()} AND ${query}"  class="table table-dark">
+							<table  class="table table-dark">
 								<tr>
 									<th>Nome</th>
 									<th>Descrizione</th>
@@ -52,9 +47,9 @@
 						</div>
 	
 					<!-- DRINKS -->
-						<div>	
+						<div th:if="${!drinks.isEmpty()} AND ${query}">	
 							<h4>Drinks:</h4>
-							<table th:if="${!drinks.isEmpty()} AND ${query}"  class="table table-dark">
+							<table class="table table-dark">
 								<tr>
 									<th>Nome</th>
 									<th>Descrizione</th>
