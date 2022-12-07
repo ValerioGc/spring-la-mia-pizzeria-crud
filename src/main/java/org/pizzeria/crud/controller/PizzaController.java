@@ -122,7 +122,7 @@ public class PizzaController {
 	}
 	
 // Search
-	@GetMapping("/search")
+	@GetMapping("/pizza/search")
 	public String getSearchPizzaByName(Model model, @RequestParam(name = "query", required = false) String query) {
 		
 		List<Pizza> pizzas = query == null ? pizzaService.findAll() : pizzaService.findByName(query);
