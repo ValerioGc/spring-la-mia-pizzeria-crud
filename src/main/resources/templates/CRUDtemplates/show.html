@@ -19,7 +19,7 @@
 					
 					<!--  main title -->
 					<i class="mx-2 fa-solid ${routeName.equals('drink') ? 'fa-pizza-slice':'fa-martini-glass'}"></i>
-					<th:block th:replace="fragments :: mainTitle('Dettaglio' +  ${element})"></th:block>  
+					<th:block th:replace="fragments :: mainTitle('Dettaglio ' +  ${element})"></th:block>  
 				
 					<!--Details section -->
 					<th:block th:replace="fragments :: detailsSection(${obj}, ${element})"></th:block>

@@ -17,13 +17,13 @@
 				<main class="col-9">
 					
 					<!-- Header main title -->
-					<th:block th:replace="fragments :: mainTitle(${element})"></th:block>  
+					<th:block th:replace="fragments :: mainTitle('Modifica ' + ${element})"></th:block>  
 
 					<!-- error message -->
 					<th:block th:replace="fragments :: errorMsg(${errors})"></th:block>
 				
 					<!-- Form -->
-					<th:block th:replace="fragments :: form('POST', ${action}, ${obj})"></th:block>
+					<th:block th:replace="fragments :: formM('POST', ${action}, ${obj})"></th:block>
 					
 				</main>
 			</div>		

@@ -107,27 +107,27 @@
 		</li>
 	</ul>
 	
-	
 <!-------------------------------------------->
 
 <!-- Form main -->
-	<form th:fragment="form(method, action, obj)"
+	<form th:fragment="formM(method, action, obj)"
 		  method="${method}" action="/pizza/edit${action}" 
-		  class="card p-4 my-3 w-75 m-auto" th:object="${obj}">
+		  class="card p-4 my-3 w-75 m-auto" 
+		  th:object="${obj}">
 
-			<label for="pName">Nome</label>
-			<input type="text" id="pName" name="pName" th:field="*{name}" />
-			
-			<label for="pDesc">Descrizione</label>
-			<input type="text" id="pDesc" name="pDesc" th:field="*{description}"/>
-			
-			
-			<label for="pPrice">Prezzo</label>
-			<input type="number" id="pPrice" name="pPrice" th:field="*{price}"/>
-
-			<button type="submit">Conferma</button>
-		</form>
+		<label for="pName">Nome</label>
+		<input type="text" id="pName" name="pName" th:field="*{name}" />
 		
+		<label for="pDesc">Descrizione</label>
+		<input type="text" id="pDesc" name="pDesc" th:field="*{description}"/>
+		
+		
+		<label for="pPrice">Prezzo</label>
+		<input type="number" id="pPrice" name="pPrice" th:field="*{price}"/>
+
+		<button type="submit">Conferma</button>
+	</form>
+	
 <!-------------------------------------------->
 
 
@@ -148,7 +148,9 @@
 		<input type="text" name="query" th:value="${query}" class="w-50 py-2 m-auto form-control" placeholder="Inserisci il nome da cercare">
 		<input type="submit" value="SEARCH" class="btn btn-primary my-3">
 	</form>
-
+	
+	
+		
 <!-------------------------------------------->
 
 <!-- Head -->
