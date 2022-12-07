@@ -17,16 +17,35 @@
 				<main class="col-9">
 					
 				<!-- Header main title -->
-					<th:block th:replace="fragments :: mainTitle('Ricerca elementi')"></th:block>  
+					<th:block th:replace="fragments :: mainTitle('Cerca elementi')"></th:block>  
 
-					<form method="GET" action="/search" class="card  w-50 m-auto my-5 p-3">
+					<form class="text-center my-3 py-3">
 						
-						<label for="name" class="py-2">Cerca un elemento</label>
-						<input type="text" name="name" id="name">
+						<label for="query">Name: </label>
 						
-						<button type="submit" class="my-4 bg-primary">Cerca</button>
+						<input type="text" name="query" th:value="${query}" class="w-50 m-auto form-control">
+						
+						<input type="submit" value="SEARCH" class="btn btn-primary">
 					</form>
 
+					<div class="col card">
+						<table th:if="${!obj.isEmpty()} AND ${!query.isEmpty()}"  class="table table-dark">
+							<tr>
+								<th>Nome</th>
+								<th>Descrizione</th>
+								<th>Prezzo</th>
+							</tr>
+							<tr th:each="pizza : ${obj}" th:object="${pizza}">
+								<td th:text="*{name}"></td>
+								<td th:text="*{description}"></td>
+								<td th:text="*{price}"></td>
+							</tr>
+						</table>
+						
+						<h3 th:if="${obj.isEmpty()}">Non ci sono pizze al momento</h3>
+						<h3 th:if="${obj.isEmpty()}">Usa la barra di ricerca per visualizzare i risultati </h3>
+					</div>
+			
 				</main>
 			</div>		
 		</div>
