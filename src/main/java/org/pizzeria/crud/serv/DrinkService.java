@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Optional;
 
 import org.pizzeria.crud.pojo.Drink;
+import org.pizzeria.crud.pojo.Pizza;
 import org.pizzeria.crud.repo.DrinkRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -28,5 +29,9 @@ public class DrinkService {
 	
 	public void deleteDrinkById(int id) {
 		drinkRepo.deleteById(id);
+	}
+	
+	public List<Drink> findByName(String name) {
+		return drinkRepo.findByNameContainingIgnoreCase(name);
 	}
 }

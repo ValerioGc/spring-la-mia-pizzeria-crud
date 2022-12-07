@@ -8,8 +8,11 @@
 				<li th:class="'list-group-item ' + ${routeName.equals('home') ? 'active' : ''}">	
 					<a href="/home" class="d-inline-block w-100 text-decoration-none text-dark"><i class="mx-2 fa-solid fa-house"></i>Homepage</a>
 				</li>
-				<li th:class="'list-group-item ' + ${routeName.equals('search') ? 'active' : ''}">	
-					<a href="/search" class="d-inline-block w-100 text-decoration-none text-dark"><i class="mx-2 fa-magnifying-glass fa-solid"></i>Cerca</a>
+				<li th:class="'list-group-item ' + ${routeName.equals('search-pizza') ? 'active' : ''}">	
+					<a href="/search" class="d-inline-block w-100 text-decoration-none text-dark"><i class="mx-2 fa-magnifying-glass fa-solid"></i>Cerca Pizza</a>
+				</li>
+				<li th:class="'list-group-item ' + ${routeName.equals('search-drink') ? 'active' : ''}">	
+					<a href="/drink/search" class="d-inline-block w-100 text-decoration-none text-dark"><i class="mx-2 fa-magnifying-glass fa-solid"></i>Cerca Drink</a>
 				</li>
 				<li th:class="'list-group-item ' + ${routeName.equals('pizza') ? 'active' : ''}">
 					<a href="/" class="d-inline-block w-100 text-decoration-none text-dark"><i class="mx-2 fa-solid fa-list"></i>Vedi tutte le pizze</a>

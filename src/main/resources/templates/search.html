@@ -29,12 +29,13 @@
 					</form>
 
 					<div class="col card">
-						<table th:if="${!obj.isEmpty()} AND ${!query.isEmpty()}"  class="table table-dark">
+						<table th:if="${!obj.isEmpty()} AND ${query}"  class="table table-dark">
 							<tr>
 								<th>Nome</th>
 								<th>Descrizione</th>
 								<th>Prezzo</th>
 							</tr>
+							
 							<tr th:each="pizza : ${obj}" th:object="${pizza}">
 								<td th:text="*{name}"></td>
 								<td th:text="*{description}"></td>
@@ -43,7 +44,7 @@
 						</table>
 						
 						<h3 th:if="${obj.isEmpty()}">Non ci sono pizze al momento</h3>
-						<h3 th:if="${obj.isEmpty()}">Usa la barra di ricerca per visualizzare i risultati </h3>
+						<h3 th:if="!${query}">Usa la barra di ricerca per visualizzare i risultati </h3>
 					</div>
 			
 				</main>
