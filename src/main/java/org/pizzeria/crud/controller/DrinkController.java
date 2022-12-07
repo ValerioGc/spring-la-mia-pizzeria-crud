@@ -122,7 +122,7 @@ public class DrinkController {
 		
 		model.addAttribute("obj", drinks);
 		model.addAttribute("query", query);
-		model.addAttribute("routeName", "search");
+		model.addAttribute("routeName", "searchDrink");
 
 		return "search";
 	}

@@ -129,7 +129,7 @@ public class PizzaController {
 		
 		model.addAttribute("obj", pizzas);
 		model.addAttribute("query", query);
-		model.addAttribute("routeName", "search");
+		model.addAttribute("routeName", "searchPizza");
 
 		return "search";
 	}

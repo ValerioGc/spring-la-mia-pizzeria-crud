@@ -19,15 +19,17 @@
 				<!-- Header main title -->
 					<th:block th:replace="fragments :: mainTitle('Cerca elementi')"></th:block>  
 
+
+				<!-- Search -->
 					<form class="text-center my-3 py-3">
-						
-						<label for="query">Name: </label>
-						
-						<input type="text" name="query" th:value="${query}" class="w-50 m-auto form-control">
-						
-						<input type="submit" value="SEARCH" class="btn btn-primary">
+					
+						<input type="text" name="query" th:value="${query}" class="w-50 py-2 m-auto form-control" placeholder="Inserisci il nome da cercare">
+				
+						<input type="submit" value="SEARCH" class="btn btn-primary my-3">
 					</form>
 
+				
+				<!-- Results -->
 					<div class="col card">
 						<table th:if="${!obj.isEmpty()} AND ${query}"  class="table table-dark">
 							<tr>
@@ -39,12 +41,13 @@
 							<tr th:each="pizza : ${obj}" th:object="${pizza}">
 								<td th:text="*{name}"></td>
 								<td th:text="*{description}"></td>
-								<td th:text="*{price}"></td>
+								<td> [[*{price}]] &euro;</td>
 							</tr>
 						</table>
 						
-						<h3 th:if="${obj.isEmpty()}">Non ci sono pizze al momento</h3>
-						<h3 th:if="!${query}">Usa la barra di ricerca per visualizzare i risultati </h3>
+						<h3 th:if="${obj.isEmpty()}" class="text-center text-danger">Non ci sono pizze al momento</h3>
+						
+						<h3 th:if="!${query}" class="text-center text-danger">Usa la barra di ricerca per visualizzare i risultati </h3>
 					</div>
 			
 				</main>
