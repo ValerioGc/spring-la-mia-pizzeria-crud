@@ -31,10 +31,10 @@ public class DrinkController {
 	public String index(Model model) {
 		
 		List<Drink> drinks = drinkService.findAll();
-		model.addAttribute("drinks", drinks);
+		model.addAttribute("obj", drinks);
 		model.addAttribute("routeName", "drink");
 		
-		return "index-drinks";
+		return "CRUDtemplates/index";
 	}
 	
 // Show
@@ -47,7 +47,7 @@ public class DrinkController {
 		model.addAttribute("element", "drink");
 		model.addAttribute("routeName", "showDrink");
 		
-		return "show";
+		return "CRUDtemplates/show";
 	}
 		
 		
@@ -61,7 +61,7 @@ public class DrinkController {
 		model.addAttribute("element", "drink");
 		model.addAttribute("action", "/drink/newDrink");
 		
-		return "new";
+		return "CRUDtemplates/new";
 	}
 	
 	@PostMapping("/newDrink")
@@ -83,10 +83,12 @@ public class DrinkController {
 		
 		Optional<Drink> optDrink = drinkService.findDrinkById(id);
 		Drink drink = optDrink.get();
-		model.addAttribute("drink", drink);
+		model.addAttribute("obj", drink);
 		model.addAttribute("routeName", "drinkEdit");
+		model.addAttribute("element", "drink");
+		model.addAttribute("action", "/drink/edit");
 		
-		return "editDrink";
+		return "CRUDtemplates/edit";
 	}
 
 	@PostMapping("/edit")

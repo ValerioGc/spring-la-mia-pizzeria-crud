@@ -32,9 +32,10 @@ public class PizzaController {
 	public String index(Model model) {
 		
 		List<Pizza> pizzas = pizzaService.findAll();
-		model.addAttribute("pizzas", pizzas);
+		model.addAttribute("obj", pizzas);
 		model.addAttribute("routeName", "pizza");
-		return "index";
+		
+		return "CRUDtemplates/index";
 	}
 	
 // home
@@ -54,7 +55,7 @@ public class PizzaController {
 		model.addAttribute("routeName", "show");
 		model.addAttribute("element", "pizza");
 		
-		return "show";
+		return "CRUDtemplates/show";
 	}
 	
 	
@@ -68,7 +69,7 @@ public class PizzaController {
 		model.addAttribute("element", "pizza");
 		model.addAttribute("action", "/pizza/newPizza");
 		
-		return "new";
+		return "CRUDtemplates/new";
 	}
 	
 	@PostMapping("/pizza/newPizza")
@@ -90,10 +91,12 @@ public class PizzaController {
 		
 		Optional<Pizza> optPizza = pizzaService.findPizzaById(id);
 		Pizza pizza = optPizza.get();
-		model.addAttribute("pizza", pizza);
+		model.addAttribute("obj", pizza);
 		model.addAttribute("routeName", "edit");
+		model.addAttribute("element", "pizza");
+		model.addAttribute("action", "/pizza/newPizza");
 		
-		return "editPizza";
+		return "CRUDtemplates/edit";
 	}
 
 	@PostMapping("/pizza/edit")

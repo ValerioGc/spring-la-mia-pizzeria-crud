@@ -13,6 +13,18 @@ body {
 	width:100vw;
 }
 
+main {
+	overflow-y:scroll;
+	position:relative;
+}
 .h-100 {
 	heigth:100%;
+}
+
+.mainHeader {
+	position:sticky;
+	top:0;
+	width:100%;
+	transition:all 0.5s linear;
+	border-bottom:1px solid #fff;
 }
