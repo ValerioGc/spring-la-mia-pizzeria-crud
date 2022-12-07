@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 	<head>
-		<th:block th:replace="fragments :: headMain('Pizzeria Java')"></th:block>
+<th:block th:replace="fragments :: headMain('Ricerca')"></th:block>
 	</head>
 	<body style="overflow-y:hidden">
 		<div class="container-fluid main-container">
@@ -15,12 +15,18 @@
 				<th:block th:replace="fragments :: asideNav(${routeName})"></th:block>
 				
 				<main class="col-9">
-			
+					
 				<!-- Header main title -->
-					<th:block th:replace="fragments :: mainTitle('Home Pizzeria')"></th:block>  
+					<th:block th:replace="fragments :: mainTitle('Ricerca elementi')"></th:block>  
 
-					<h5 class="m-auto py-5 h4 text-center">Benvenuto nella homepage della pizzeria</h5>
-			
+					<form method="GET" action="/search" class="card  w-50 m-auto my-5 p-3">
+						
+						<label for="name" class="py-2">Cerca un elemento</label>
+						<input type="text" name="name" id="name">
+						
+						<button type="submit" class="my-4 bg-primary">Cerca</button>
+					</form>
+
 				</main>
 			</div>		
 		</div>

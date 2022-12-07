@@ -120,4 +120,12 @@ public class PizzaController {
 		
 		return "redirect:/";
 	}
+	
+	
+	@GetMapping("/search")
+	public String searchElement(Model model) {
+		
+		model.addAttribute("routeName", "search");
+		return "search";
+	}
 }

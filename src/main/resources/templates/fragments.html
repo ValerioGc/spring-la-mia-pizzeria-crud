@@ -8,6 +8,9 @@
 				<li th:class="'list-group-item ' + ${routeName.equals('home') ? 'active' : ''}">	
 					<a href="/home" class="d-inline-block w-100 text-decoration-none text-dark"><i class="mx-2 fa-solid fa-house"></i>Homepage</a>
 				</li>
+				<li th:class="'list-group-item ' + ${routeName.equals('search') ? 'active' : ''}">	
+					<a href="/search" class="d-inline-block w-100 text-decoration-none text-dark"><i class="mx-2 fa-magnifying-glass fa-solid"></i>Cerca</a>
+				</li>
 				<li th:class="'list-group-item ' + ${routeName.equals('pizza') ? 'active' : ''}">
 					<a href="/" class="d-inline-block w-100 text-decoration-none text-dark"><i class="mx-2 fa-solid fa-list"></i>Vedi tutte le pizze</a>
 				</li>
@@ -120,7 +123,7 @@
 
 <!-- Main Header -->
 	<h3 th:fragment="mainTitle(element)" 
-		class="m-0 text-center bg-dark text-light py-2" >
+		class="m-0 text-center bg-dark text-light py-2 mainHeader" >
 		Modifica [[${element}]]:
 	</h3>
 
