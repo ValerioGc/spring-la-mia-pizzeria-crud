@@ -4,12 +4,12 @@
 	<th:block th:replace="fragments :: headMain('Home Pizzeria Java')"></th:block>
  
 	<body>
-		<div class="container-fluid main-container">
+		<div class="container-fluid main-container bg-light">
 
 			<!-- Header --> 
 			<th:block th:replace="fragments :: header()"></th:block>
 
-			<div class="container-app px-5 py-3 row justify-content-center align-items-stretch flex-nowrap bg-light">
+			<div class="container-app px-5 py-3 row justify-content-center align-items-stretch flex-nowrap">
 			
 				<!-- Aside NavBar --> 
 				<th:block th:replace="fragments :: asideNav(${routeName})"></th:block>
@@ -19,7 +19,7 @@
 					<!--  main title -->
 					<th:block th:replace="fragments :: mainTitle('Home Pizzeria')"></th:block>  
 
-					<h5 class="m-auto py-5 h4 text-center">Benvenuto nella homepage della pizzeria</h5>
+					<h4 class="m-auto py-5 my-5 text-center">Benvenuto nella homepage della pizzeria</h4>
 			
 				</main>
 			</div>		

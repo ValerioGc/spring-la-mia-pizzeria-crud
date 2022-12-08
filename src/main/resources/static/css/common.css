@@ -8,17 +8,25 @@ body {
 	overflow-y:hidden;
 }
 
+.headerApp {
+	background-image: url("../img/pizza1.jpg");
+	background-repeat:no-repeat;
+	background-size:cover;
+	background-position:center;
+	box-shadow: 0 0 3px #000;
+}
+
 .main-container {
 	height:100vh;
 	width:100vw;
+	padding:0;
 }
 
 main {
-	overflow-y:scroll;
+	overflow-y:auto;
 	position:relative;
-}
-.h-100 {
-	height:100%;
+	padding:0!important;
+	box-shadow: 0 0 3px #000;
 }
 
 .mainHeader {
@@ -44,6 +52,25 @@ main {
 	height:80vh;
 	width:100%;
 }
+
+.h-100 {
+	height:100%;
+}
+
 .v-al-mid{
 	vertical-align:middle;
+}
+
+
+.bdy {
+	color:#ffffff!important;
+}
+
+
+.title-header {
+	text-shadow:1px 1px 1px #ffffff; 
+}
+
+.aside-nav {
+	box-shadow: 0 0 3px #000;
 }

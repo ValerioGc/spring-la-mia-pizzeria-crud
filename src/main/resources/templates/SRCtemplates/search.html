@@ -4,12 +4,12 @@
 	<th:block th:replace="fragments :: headMain('Ricerca')"></th:block>
 
 	<body>
-		<div class="container-fluid main-container">
+		<div class="container-fluid main-container bg-light">
 
 			<!-- Header --> 
 			<th:block th:replace="fragments :: header()"></th:block>
 
-			<div class="container-app px-5 py-3 row justify-content-center align-items-stretch flex-nowrap bg-light w-100">
+			<div class="container-app px-5 py-3 row justify-content-center align-items-stretch flex-nowrap w-100">
 			
 				<!-- Aside NavBar --> 
 				<th:block th:replace="fragments :: asideNav(${routeName})"></th:block>
@@ -17,22 +17,24 @@
 				<main class="col-9">
 					
 					<!--  main title -->
-					<th:block th:replace="fragments :: mainTitle('Ricerca')"></th:block>  
+					<th:block th:replace="fragments :: mainTitle('Ricerca ' + ${element})"></th:block>  
 
 					<!-- Search -->
-					<div>
+					<div class="px-3">
 						<th:block th:replace="fragments :: srcBar(${query})"></th:block>  
 					</div>
 
 					<!-- Results -->
-					<div th:if="${!obj.isEmpty()} AND ${query}" >
-				
+					<div class="px-5">
+						<!-- Messages -->		
+						<h3 th:if="${#strings.isEmpty(query)}" class=" pt-2 pb-3 text-center text-danger">Usa la barra di ricerca per visualizzare i risultati </h3>
+
+						<h3 th:if="${obj.isEmpty()}" class="pt-2 pb-3 text-center text-danger">Non ci sono pizze al momento</h3>
+
 						<!--  Index Table  -->	
-						<th:block th:replace="fragments :: table(${obj},  ${routeName}, 'src')"></th:block>
-							
-						<h3 th:if="${obj.isEmpty()}" class="text-center text-danger">Non ci sono pizze al momento</h3>
-						
-						<h3 th:if="!${query}" class="text-center text-danger">Usa la barra di ricerca per visualizzare i risultati </h3>
+						<th:block th:if="${!#strings.isEmpty(query)} AND ${!obj.isEmpty()}"  
+								  th:insert="fragments :: table(${obj}, ${routeName}, 'src')"></th:block>
+								  
 					</div>			
 				</main>
 			</div>		

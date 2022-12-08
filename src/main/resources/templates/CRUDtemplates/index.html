@@ -4,12 +4,12 @@
 	<th:block th:replace="fragments :: headMain(${routeName})"></th:block>
 	
 	<body>
-		<div class="main-container container-fluid" >
+		<div class="main-container container-fluid bg-light" >
 		
 			<!-- Header --> 
 			<th:block th:replace="fragments :: header()"></th:block>
 	
-			<div th:if="${!obj.isEmpty()}" class="container-app px-5 py-3 row justify-content-center align-items-stretch flex-nowrap bg-light" >
+			<div th:if="${!obj.isEmpty()}" class="container-app px-5 py-3 row justify-content-center align-items-stretch flex-nowrap" >
 				
 				<!-- Aside NavBar --> 
 				<th:block th:replace="fragments :: asideNav(${routeName})"></th:block>

@@ -1,15 +1,15 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
  
-	<th:block th:replace="fragments :: headMain('Modifica' + ${element})"></th:block>
+	<th:block th:replace="fragments :: headMain('Modifica ' + ${element})"></th:block>
  
 	<body>
-		<div class="main-container container-fluid">
+		<div class="main-container container-fluid bg-light">
 
 			<!-- Header --> 
 			<th:block th:replace="fragments :: header()"></th:block>
 
-			<div class="container-app px-5 py-3 row justify-content-center align-items-stretch flex-nowrap bg-light">
+			<div class="container-app px-5 py-3 row justify-content-center align-items-stretch flex-nowrap ">
 				
 				<!-- Aside NavBar --> 
 				<th:block th:replace="fragments :: asideNav(${routeName})"></th:block>

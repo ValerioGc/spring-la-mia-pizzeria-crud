@@ -130,7 +130,8 @@ public class PizzaController {
 		model.addAttribute("obj", pizzas);
 		model.addAttribute("query", query);
 		model.addAttribute("routeName", "searchPizza");
-
+		model.addAttribute("element", "pizza");
+		
 		return "SRCtemplates/search";
 	}
 }

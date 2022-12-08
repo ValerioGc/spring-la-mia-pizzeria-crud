@@ -37,7 +37,6 @@ public class SearchController {
 		model.addAttribute("query", query);
 		model.addAttribute("routeName", "search");
 		
-		
 		return "SRCtemplates/commonSearch";
  	}
 }

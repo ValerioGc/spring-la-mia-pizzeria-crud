@@ -123,6 +123,7 @@ public class DrinkController {
 		model.addAttribute("obj", drinks);
 		model.addAttribute("query", query);
 		model.addAttribute("routeName", "searchDrink");
+		model.addAttribute("element", "drink");
 
 		return "SRCtemplates/search";
 	}

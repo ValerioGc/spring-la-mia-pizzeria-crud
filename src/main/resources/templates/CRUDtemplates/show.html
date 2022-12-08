@@ -5,20 +5,19 @@
  
 	<body>
 		<!-- Main Layout --> 
-		<div class="container-fluid main-container" >
+		<div class="container-fluid main-container bg-light" >
 			
 			<!-- Header --> 
 			<th:block th:replace="fragments :: header()"></th:block>
 			
-		 	<div class="container-app px-5 py-3 row justify-content-center align-items-stretch flex-nowrap bg-light">	
+		 	<div class="container-app px-5 py-3 row justify-content-center align-items-stretch flex-nowrap">	
 				
 				<!-- Aside NavBar --> 
 				<th:block th:replace="fragments :: asideNav(${routeName})"></th:block>
 				
 				<main class="col-9">
 					
-					<!--  main title -->
-					<i class="mx-2 fa-solid ${routeName.equals('drink') ? 'fa-pizza-slice':'fa-martini-glass'}"></i>
+					<!--  Main title -->
 					<th:block th:replace="fragments :: mainTitle('Dettaglio ' +  ${element})"></th:block>  
 				
 					<!--Details section -->

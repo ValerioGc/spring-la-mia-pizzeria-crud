@@ -1,15 +1,15 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
  
-	<th:block th:replace="fragments :: headMain('Crea un nuovo elemento' + ${action})"></th:block>
+	<th:block th:replace="fragments :: headMain('Crea un nuovo elemento')"></th:block>
  
 	<body>
-		<div class="container-fluid main-container" >
+		<div class="container-fluid main-container bg-light" >
 	
 			<!-- Header --> 
 			<th:block th:replace="fragments :: header()"></th:block>
 			
-			<div class="container-app px-5 py-3 row justify-content-center align-items-stretch flex-nowrap bg-light">
+			<div class="container-app px-5 py-3 row justify-content-center align-items-stretch flex-nowrap">
 
 				<!-- Aside NavBar --> 
 				<th:block th:replace="fragments :: asideNav(${routeName})"></th:block>
@@ -21,7 +21,7 @@
 				
 					<!-- Error message -->
 					<th:block th:replace="fragments :: errorMsg(${errors})"></th:block>
-				
+
 					<!-- Form -->
 					<th:block th:replace="fragments :: formM('POST', ${action}, ${obj})"></th:block>
 			
