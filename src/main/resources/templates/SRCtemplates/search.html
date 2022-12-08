@@ -29,7 +29,7 @@
 						<!-- Messages -->		
 						<h3 th:if="${#strings.isEmpty(query)}" class=" pt-2 pb-3 text-center text-danger">Usa la barra di ricerca per visualizzare i risultati </h3>
 
-						<h3 th:if="${obj.isEmpty()}" class="pt-2 pb-3 text-center text-danger">Non ci sono pizze al momento</h3>
+						<h3 th:if="${obj.isEmpty()}" class="pt-2 pb-3 text-center text-danger">Nessun risultato</h3>
 
 						<!--  Index Table  -->	
 						<th:block th:if="${!#strings.isEmpty(query)} AND ${!obj.isEmpty()}"  

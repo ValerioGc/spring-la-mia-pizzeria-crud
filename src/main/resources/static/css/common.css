@@ -9,11 +9,13 @@ body {
 }
 
 .headerApp {
-	background-image: url("../img/pizza1.jpg");
+	background-image: url("../img/pizza2.jpg");
 	background-repeat:no-repeat;
 	background-size:cover;
 	background-position:center;
 	box-shadow: 0 0 3px #000;
+	background-color:#000;
+	opacity:0.9;
 }
 
 .main-container {

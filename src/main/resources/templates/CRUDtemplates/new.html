@@ -17,7 +17,7 @@
 				<main class="col-9">
 				
 					<!-- main title -->
-					<th:block th:replace="fragments :: mainTitle(${element})"></th:block>  
+					<th:block th:replace="fragments :: mainTitle('Crea ' + ${element})"></th:block>  
 				
 					<!-- Error message -->
 					<th:block th:replace="fragments :: errorMsg(${errors})"></th:block>

@@ -25,25 +25,29 @@
 					</div>
 					
 					<!-- Results -->						
-					<div class="col card">
-						<div th:if="${!pizzas.isEmpty()} AND ${query}" >
+					<div class="col card" th:if="${!pizzas.isEmpty()} OR ${!drinks.isEmpty()}">
+					
+						<div th:if="${!pizzas.isEmpty()} AND ${!#strings.isEmpty(query)}">
 							<h4 class="py-3 text-center">Pizze:</h4>
 						
 							<!--  Index Table PIZZE -->	
-							<th:block th:replace="fragments :: table(${pizzas}, ${routeName}, 'src')"></th:block>
+							<th:block th:insert="fragments :: table(${pizzas}, ${routeName}, 'src')"></th:block>
 							
 							<h3 th:if="${pizzas.isEmpty()}" class="text-center text-danger">Nessun risultato</h3>
 						</div>
 
 						
-						<div th:if="${!drinks.isEmpty()} AND ${query}">	
+						<div th:if="${!drinks.isEmpty()} AND ${!#strings.isEmpty(query)}">	
 							<h4 class="py-3 text-center">Drinks:</h4>
 		
 							<!--  Index Table DRINKS -->
 							<th:block th:replace="fragments :: table(${drinks}, ${routeName}, 'src')"></th:block>
 							
 							<h3 th:if="${drinks.isEmpty()}" class="text-center text-danger">Nessun risultato</h3>
-						</div>		
+						</div>
+						
+						<h3 th:if="${#strings.isEmpty(query)}" class=" py-3 text-center text-danger">Usa la barra di ricerca per visualizzare i risultati </h3>
+								
 					</div>
 				</main>
 			</div>		
