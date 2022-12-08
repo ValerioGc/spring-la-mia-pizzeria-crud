@@ -38,6 +38,6 @@ public class SearchController {
 		model.addAttribute("routeName", "search");
 		
 		
-		return "commonSearch";
+		return "SRCtemplates/commonSearch";
  	}
 }

@@ -124,7 +124,7 @@ public class DrinkController {
 		model.addAttribute("query", query);
 		model.addAttribute("routeName", "searchDrink");
 
-		return "search";
+		return "SRCtemplates/search";
 	}
 }
 

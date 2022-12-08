@@ -31,7 +31,19 @@ main {
 	z-index:99;
 }
 
+.tableHeader {
+	position:sticky;
+	top:0;
+	width:100%;
+	transition:all 0.5s linear;
+	text-transform:capitalize;
+	z-index:99;
+}
+
 .container-app {
 	height:80vh;
 	width:100%;
+}
+.v-al-mid{
+	vertical-align:middle;
 }

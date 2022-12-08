@@ -131,6 +131,6 @@ public class PizzaController {
 		model.addAttribute("query", query);
 		model.addAttribute("routeName", "searchPizza");
 
-		return "search";
+		return "SRCtemplates/search";
 	}
 }
