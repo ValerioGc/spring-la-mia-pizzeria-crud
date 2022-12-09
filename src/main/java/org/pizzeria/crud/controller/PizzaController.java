@@ -60,53 +60,59 @@ public class PizzaController {
 	}
 	
 // Create	
-	@GetMapping("/pizza/newPizza")
-	public String createPizza(Model model) {
+	@GetMapping("/pizza/create")
+	public String getCreatePizza(Model model) {
 		
 		Pizza pizza = new Pizza();
 		model.addAttribute("obj", pizza);
+		
 		model.addAttribute("routeName", "new");
 		model.addAttribute("element", "pizza");
-		model.addAttribute("action", "/pizza/newPizza");
+		model.addAttribute("action", "/pizza/create");
 		
 		return "CRUDtemplates/new";
 	}
 	
-	@PostMapping("/pizza/newPizza")
-	public String storePizza(@Valid @ModelAttribute("pizza") Pizza pizza, BindingResult bindingResult, RedirectAttributes redirectAttributes) {
+	@PostMapping("/pizza/create")
+	public String storePizza(@Valid Pizza pizza, BindingResult bindingResult, RedirectAttributes redirectAttributes) {
 	
 		
 		if(bindingResult.hasErrors()) {
 			redirectAttributes.addFlashAttribute("errors", bindingResult.getAllErrors());
-			return "redirect:/pizza/newPizza";
+			return "redirect:/pizza/create";
 		}
 		
+		redirectAttributes.addFlashAttribute("successMsg", "Creazione avvenuta con successo");
 		pizzaService.save(pizza);
+		
 		return "redirect:/";
 	}
 	
 // Edit
-	@GetMapping("/pizza/edit/{id}")
-	public String editPizza(@PathVariable("id") int id, Model model) {
+	@GetMapping("/pizza/update/{id}")
+	public String getPizzaUpdate(@PathVariable("id") int id, Model model) {
 		
 		Optional<Pizza> optPizza = pizzaService.findPizzaById(id);
 		Pizza pizza = optPizza.get();
+		
 		model.addAttribute("obj", pizza);
+		
 		model.addAttribute("routeName", "edit");
 		model.addAttribute("element", "pizza");
-		model.addAttribute("action", "/pizza/newPizza");
+		model.addAttribute("action", "/pizza/update");
 		
 		return "CRUDtemplates/edit";
 	}
 
-	@PostMapping("/pizza/edit")
-	public String updatePizza(@Valid @ModelAttribute("pizza") Pizza pizza, BindingResult bindingResult, RedirectAttributes redirectAttributes) {
+	@PostMapping("/pizza/update")
+	public String updatePizza(@Valid Pizza pizza, BindingResult bindingResult, RedirectAttributes redirectAttributes) {
 		
 		if(bindingResult.hasErrors()) {
 			redirectAttributes.addFlashAttribute("errors", bindingResult.getAllErrors());
-			return "redirect:/pizza/editPizza/" + pizza.getId();
+			return "redirect:/pizza/update/" + pizza.getId();
 		}
 		
+		redirectAttributes.addFlashAttribute("successMsg", "Modifica avvenuta con successo");
 		pizzaService.save(pizza);
 		
 		return "redirect:/";

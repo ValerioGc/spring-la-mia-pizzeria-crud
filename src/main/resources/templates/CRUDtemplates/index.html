@@ -15,10 +15,14 @@
 				<th:block th:replace="fragments :: asideNav(${routeName})"></th:block>
 				
 				<main class="col-9">
-					
+				
 					<!--  main title -->
 					<th:block th:replace="fragments :: mainTitle(${routeName})"></th:block>  
 					
+					<!-- Validation msg -->
+					<th:block th:replace="fragments :: successMsg(${successMsg})"></th:block>
+
+				
 					<!--  Index Table -->
 					<th:block th:replace="fragments :: table(${obj}, ${routeName}, 'display')"></th:block>
 				</main>	

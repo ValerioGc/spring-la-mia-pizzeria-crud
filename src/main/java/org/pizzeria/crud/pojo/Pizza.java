@@ -9,29 +9,30 @@ import jakarta.persistence.Lob;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
 
 
 @Entity
-@Table(name = "pizza")
+@Table
 public class Pizza {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	
-	@Column(nullable = false)
+	@Column(unique = true, nullable = false)
+	@NotEmpty(message = "Il nome della pizza non deve essere vuoto")
 	@NotNull(message = "Il nome della pizza non deve essere vuoto")
 	private String name;
 	
-	@Column
 	@Lob
 	private String description;
 	
-	@Column
-	@Min(value = 1)
-	@Max(value = 100)
-	@NotNull(message = "Il prezzo deve essere superiore a 0 euro")
+	@Min(value = 1, message = "Il prezzo deve essere superiore a 0€")
+	@Max(value = 100, message = "Il prezzo non deve essere superiore a 100€")
+	@NotNull(message = "Il prezzo non deve esser vuoto")
+
 	private int price;
 	
 	public Pizza() { }

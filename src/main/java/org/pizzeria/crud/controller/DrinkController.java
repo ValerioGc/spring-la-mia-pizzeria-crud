@@ -40,7 +40,7 @@ public class DrinkController {
 	
 // Show
 	@GetMapping("/{id}")
-	public String getDrink1(@PathVariable("id") int id, Model model) {
+	public String getDrink(@PathVariable("id") int id, Model model) {
 		
 		Optional<Drink> optDrink = drinkService.findDrinkById(id);
 		Drink drink = optDrink.get();
@@ -53,33 +53,34 @@ public class DrinkController {
 		
 		
 // Create	
-	@GetMapping("/newDrink")
+	@GetMapping("/create")
 	public String createDrink(Model model) {
 		
 		Drink drink = new Drink();
 		model.addAttribute("obj", drink);
 		model.addAttribute("routeName", "newDrink");
 		model.addAttribute("element", "drink");
-		model.addAttribute("action", "/drink/newDrink");
+		model.addAttribute("action", "/drink/create");
 		
 		return "CRUDtemplates/new";
 	}
 	
-	@PostMapping("/newDrink")
-	public String storeDrink(@Valid @ModelAttribute("drink") Drink drink, BindingResult bindingResult, RedirectAttributes redirectAttributes) {
+	@PostMapping("/create")
+	public String storeDrink(@Valid Drink drink, BindingResult bindingResult, RedirectAttributes redirectAttributes) {
 		
 		if(bindingResult.hasErrors()) {
 			redirectAttributes.addFlashAttribute("errors", bindingResult.getAllErrors());
-			return "redirect:/newDrink";
+			return "redirect:/drink/create";
 		}
 		
+		redirectAttributes.addFlashAttribute("successMsg", "Creazione avvenuta con successo");
 		drinkService.save(drink);
 		
 		return "redirect:/drink";
 	}
 	
 // Edit
-	@GetMapping("/edit/{id}")
+	@GetMapping("/update/{id}")
 	public String editDrink(@PathVariable("id") int id, Model model) {
 		
 		Optional<Drink> optDrink = drinkService.findDrinkById(id);
@@ -87,19 +88,20 @@ public class DrinkController {
 		model.addAttribute("obj", drink);
 		model.addAttribute("routeName", "drinkEdit");
 		model.addAttribute("element", "drink");
-		model.addAttribute("action", "/drink/edit");
+		model.addAttribute("action", "/drink/update");
 		
 		return "CRUDtemplates/edit";
 	}
 
-	@PostMapping("/edit")
-	public String updateDrink(@Valid @ModelAttribute("drink") Drink drink, BindingResult bindingResult, RedirectAttributes redirectAttributes) {
+	@PostMapping("/update")
+	public String updateDrink(@Valid Drink drink, BindingResult bindingResult, RedirectAttributes redirectAttributes) {
 		
 		if(bindingResult.hasErrors()) {
 			redirectAttributes.addFlashAttribute("errors", bindingResult.getAllErrors());
-			return "redirect:/drink/edit/" + drink.getId();
+			return "redirect:/drink/update/" + drink.getId();
 		}
 		
+		redirectAttributes.addFlashAttribute("successMsg", "Modifica avvenuta con successo");
 		drinkService.save(drink);
 		
 		return "redirect:/drink";

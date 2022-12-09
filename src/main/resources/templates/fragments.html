@@ -36,7 +36,7 @@
 				<a href="/pizza/search" th:class="'d-inline-block w-100 text-decoration-none' + ${routeName.equals('searchPizza') ? ' bdy' : ''} "><i class="mx-2 fa-magnifying-glass fa-solid"></i>Cerca Pizza</a>
 			</li>
 			<li th:class="'list-group-item ' + ${routeName.equals('new') ? 'active' : ''}">
-				<a href="/pizza/newPizza" th:class="'d-inline-block w-100 text-decoration-none' + ${routeName.equals('new') ? ' bdy' : ''} "><i class="fa-solid fa-pizza-slice mx-2"></i>Crea una nuova pizza</a>
+				<a href="/pizza/create" th:class="'d-inline-block w-100 text-decoration-none' + ${routeName.equals('new') ? ' bdy' : ''} "><i class="fa-solid fa-pizza-slice mx-2"></i>Crea una nuova pizza</a>
 			</li>
 			<li class="list-group-item text-center text-light bg-dark fw-bold py-1">
 				Drinks
@@ -48,7 +48,7 @@
 				<a href="/drink/search" th:class="'d-inline-block w-100 text-decoration-none' + ${routeName.equals('searchDrink') ? ' bdy' : ''}"><i class="mx-2 fa-magnifying-glass fa-solid"></i>Cerca Drink</a>
 			</li>
 			<li th:class="'list-group-item ' + ${routeName.equals('newDrink') ? 'active' : ''}">
-				<a href="/drink/newDrink" th:class="'d-inline-block w-100 text-decoration-none' + ${routeName.equals('newDrink') ? ' bdy' : ''} "><i class="fa-solid fa-martini-glass mx-2"></i>Crea un nuovo drink</a>
+				<a href="/drink/create" th:class="'d-inline-block w-100 text-decoration-none' + ${routeName.equals('newDrink') ? ' bdy' : ''} "><i class="fa-solid fa-martini-glass mx-2"></i>Crea un nuovo drink</a>
 			</li>
 		</ul>
 	</nav>
@@ -97,7 +97,7 @@
  					<a class="btn btn-primary" th:href="@{'/' + ${objNm} + '/{id}' (id=${drink.id})}">Dettagli</a> 
 				</td>
 				<td style="width:10%">
-					<a th:href="@{'/' + ${objNm} + '/edit/{id}'(id=${drink.id})}" class="btn btn-success">Modifica</a>
+					<a th:href="@{'/' + ${objNm} + '/update/{id}'(id=${drink.id})}" class="btn btn-success">Modifica</a>
 				</td>
 				<td  style="width:10%">
 					<a th:href="@{'/' + ${objNm} + '/delete/{id}'(id=${drink.id})}" class="btn btn-danger">Elimina</a>
@@ -135,7 +135,7 @@
 	</ul>
 	
 	<span class="m-auto">
-		<a th:href="@{'/' + ${element} + '/edit/{id}' (id=*{id})}" 
+		<a th:href="@{'/' + ${element} + '/update/{id}' (id=*{id})}" 
 		   class=" btn-primary btn mx-2">Modifica</a>			
 		   	
 		<a th:href="@{'/' + ${element} + '/delete/{id}' (id=*{id})}" 
@@ -148,9 +148,11 @@
 <!-------------------- Main Form ------------------------>
 
 <form th:fragment="formM(method, action, obj)"
-	  method="${method}" action="/pizza/edit${action}" 
+	  method="POST" th:action="${action}" 
 	  class="card p-5 my-5 w-50 m-auto" 
 	  th:object="${obj}">
+
+	<input type="text" name="id" th:field="*{id}" style="display:none">
 
 	<label for="pName" class="pt-3 pb-1 fw-bold">Nome</label>
 	<input type="text" id="pName" name="pName" th:field="*{name}" />
@@ -166,17 +168,24 @@
 	
 	
 		
-<!--------------------- Errors msg ----------------------->
+<!--------------------- Errors Msg ----------------------->
 
-<ul th:fragment="errorMsg(errors)" th:if="${errors}" class="list-group">
-	<li th:each="error : ${errors}" class="p-4 alert alert-danger text-capitalize">
-		[[${error.defaultMessage}]]
+<ul th:fragment="errorMsg(errors)" th:if="${errors}" class="list-group list-unstyled">
+	<li th:each="error : ${errors}" th:object="${error}" class="p-4 alert alert-danger text-capitalize">
+		[[*{defaultMessage}]]
 	</li>
 </ul>
 
-	
-	
-<!--------------------- Search form ----------------------->
+
+
+<!--------------------- Success Msg ----------------------->
+
+<p th:fragment="successMsg(successMsg)" th:if="${successMsg}" 
+	 class="p-4 alert alert-success text-capitalize timed-exit my-1">
+	[[${successMsg}]]
+</p>
+				
+<!--------------------- Search Form ----------------------->
 
 <form th:fragment="srcBar(query)"
       class="text-center my-3 py-3" >		
