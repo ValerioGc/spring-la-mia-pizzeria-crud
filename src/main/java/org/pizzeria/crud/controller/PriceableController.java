@@ -12,8 +12,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-
 
 
 @Controller	
@@ -28,21 +26,20 @@ public class PriceableController {
 
 
 	@GetMapping
-	public String getPriceable(Model model, 
-					           @RequestParam(name = "q", required = false) 
-							   String query) {
+	public String getPriceable(Model model) {
 	
 		List<PriceableInt> elementsPriceables = new LinkedList<>();
 		
+		// Add elements
 		elementsPriceables.addAll(drinkService.findAll());
 		elementsPriceables.addAll(pizzaService.findAll());
 	
+		//Sort
 		elementsPriceables.sort((p1, p2) -> p1.getPrice() - p2.getPrice());
 	
 		
-	
-		model.addAttribute("elementsPriceable", elementsPriceables);
-		model.addAttribute("query", query);
+		//Attributes
+		model.addAttribute("obj", elementsPriceables);
 		model.addAttribute("routeName", "search");
 	
 		return "SRCtemplates/priceable";

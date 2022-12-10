@@ -26,6 +26,9 @@
 			<li th:class="'list-group-item ' + ${routeName.equals('search') ? 'active' : ''}">	
 				<a href="/search" th:class="'d-inline-block w-100 text-decoration-none' + ${routeName.equals('search') ? ' bdy' : ''} "><i class="mx-2 fa-magnifying-glass fa-solid"></i>Cerca</a>
 			</li>
+			<li th:class="'list-group-item ' + ${routeName.equals('priceable') ? 'active' : ''}">	
+				<a href="/priceable" th:class="'d-inline-block w-100 text-decoration-none' + ${routeName.equals('priceable') ? ' bdy' : ''} "><i class="mx-2 fa-magnifying-glass fa-solid"></i>Tutti gli elementi</a>
+			</li>
 			<li class="list-group-item text-center text-light bg-dark fw-bold py-1">
 				Pizza
 			</li>
