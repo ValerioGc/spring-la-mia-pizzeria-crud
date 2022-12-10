@@ -1,5 +1,7 @@
 package org.pizzeria.crud.pojo;
 
+import org.pizzeria.crud.intf.PriceableInt;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -14,7 +16,7 @@ import jakarta.validation.constraints.NotNull;
 
 @Entity
 @Table
-public class Drink {
+public class Drink implements PriceableInt{
 		
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -64,11 +66,13 @@ public class Drink {
 	public void setDescription(String description) {
 		this.description = description;
 	}
-
+	
+	@Override
 	public int getPrice() {
 		return price;
 	}
-
+	
+	@Override
 	public void setPrice(int price) {
 		this.price = price;
 	}

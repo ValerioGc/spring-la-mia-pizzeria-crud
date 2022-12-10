@@ -4,7 +4,6 @@ import java.util.List;
 import java.util.Optional;
 
 import org.pizzeria.crud.pojo.Drink;
-import org.pizzeria.crud.pojo.Pizza;
 import org.pizzeria.crud.repo.DrinkRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
